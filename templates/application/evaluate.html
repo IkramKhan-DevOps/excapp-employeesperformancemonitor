@@ -1,0 +1,123 @@
+{% extends 'application/base.html' %}
+{% load static %}
+
+{% block seller_base_title %}
+    Evaluation
+{% endblock %}
+
+{% block base_page_heading %}
+    Employee Evaluation
+    <div class="row">
+    <div class="col-6">
+        <select class="form-control mt-2">
+        <option>Select Employee</option>
+    </select>
+    </div>
+    <div class="col-6">
+        <select class="form-control mt-2">
+        <option>Select Date</option>
+    </select>
+    </div>
+    </div>
+{% endblock %}
+
+{% block base_content %}
+
+    <div class="row">
+        <div class="col-2">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Focus Here</h4>
+                    <p class="card-title-desc mb-5">
+                        Enter values
+                    </p>
+                    <div>
+                        <input class="form-control mb-2" type="number" width="20" placeholder="Activity">
+                        <input class="form-control mb-2" type="number" width="20" placeholder="Time">
+                        <input class="form-control mb-2" type="number" width="20" placeholder="Output">
+                        <input class="form-control mb-2" type="number" width="20" placeholder="Collaboration">
+                        <input class="form-control mb-2" type="number" width="20" placeholder="Feed">
+                        <input class="btn btn-sm btn-dark" type="button" value="Submit">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-10">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Live Update</h4>
+                    <p class="card-title-desc mb-5">
+                        Please select your employee and add no from 0-100, on the basis of different scales on the left.
+                    </p>
+                    <div class="">
+                        <div class="custom-progess mb-5">
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-success" role="progressbar" style="width: 84%"
+                                     aria-valuenow="75"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="avatar-xs progress-icon">
+                                                    <span class="avatar-title rounded-circle border border-success">
+                                                        <i class="bx bx-accessibility text-success font-size-18"></i>
+                                                    </span>
+                            </div>
+                        </div>
+
+                        <div class="custom-progess mb-5">
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-danger" role="progressbar" style="width: 84%"
+                                     aria-valuenow="75"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="avatar-xs progress-icon">
+                                                    <span class="avatar-title rounded-circle border border-danger">
+                                                        <i class="bx bx-alarm text-danger font-size-18"></i>
+                                                    </span>
+                            </div>
+                        </div>
+
+                        <div class="custom-progess mb-5">
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 84%"
+                                     aria-valuenow="75"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="avatar-xs progress-icon">
+                                                    <span class="avatar-title rounded-circle border border-primary">
+                                                        <i class="bx bx-chart text-primary font-size-18"></i>
+                                                    </span>
+                            </div>
+                        </div>
+
+                        <div class="custom-progess mb-5">
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="avatar-xs progress-icon">
+                                                    <span class="avatar-title rounded-circle border border-warning">
+                                                        <i class="bx bx-group text-warning font-size-18"></i>
+                                                    </span>
+                            </div>
+                        </div>
+                        <div class="custom-progess mb-4">
+                            <div class="progress progress-sm">
+                                <div class="progress-bar bg-info" role="progressbar" style="width: 62%"
+                                     aria-valuenow="62"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            <div class="avatar-xs progress-icon">
+                                                    <span class="avatar-title rounded-circle border border-info">
+                                                        <i class="bx bxl-jquery text-info font-size-18"></i>
+                                                    </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends 'application/base.html' %}
+{% load static %}
+
+{% block base_title %}
+    Add-Employee
+{% endblock %}
+
+{% block base_page_heading %}
+    Add Employee
+{% endblock %}
+
+{% block base_content %}
+    <div class="container">
+
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-7">
+                <div class="card">
+                    <div class="card-body">
+
+                        <div>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <i class="mdi mdi-block-helper mr-2"></i>
+                                Your bank account is not verified yet.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="owner">Owner</label>
+                                        <input type="text" class="form-control" id="owner">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cvv">CVV</label>
+                                        <input type="text" class="form-control" id="cvv">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="mb-0">
+                            <div class="form-group">
+                                <label>Card Number</label>
+                                <div>
+                                    <input type="text" id="card_number" class="form-control">
+                                </div>
+                            </div>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dob">Date of Birth</label>
+                                        <input type="date" class="form-control" id="dob">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group text-right">
+                                        <img src="{% static 'tarbazar/visa.jpg' %}" id="visa" height="65" alt="visa_card">
+                                        <img src="{% static 'tarbazar/mastercard.jpg' %}" id="mastercard" height="65" alt="master_card">
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <p class="card-text"></p>
+                            <button type="submit" class="btn btn-primary"><i class="fa fa-plus"></i>
+                                Add and Verity
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

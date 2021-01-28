@@ -1,0 +1,127 @@
+{% extends 'application/base.html' %}
+{% load static %}
+
+{% block base_title %}
+    Add-Employee
+{% endblock %}
+
+{% block base_page_heading %}
+    Add Employee
+{% endblock %}
+
+{% block base_content %}
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-7">
+                <div class="card">
+                    <div class="card-body p-4">
+
+                        <div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="owner">First Name</label>
+                                        <input type="text" class="form-control" id="owner" placeholder="John">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cvv">Last Name</label>
+                                        <input type="text" class="form-control" id="cvv" placeholder="Smith">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="owner">Contact No</label>
+                                        <input type="text" class="form-control" id="owner" placeholder="+00 000 000 000 0">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="cvv">Email</label>
+                                        <input type="text" class="form-control" id="cvv" placeholder="employee_name@outlook.com">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="mb-0">
+                            <div class="form-group">
+                                <label>Address</label>
+                                <div>
+                                    <textarea id="card_number" class="form-control" placeholder="address - street - area - city - state and country"></textarea>
+                                </div>
+                            </div>
+                            </p>
+
+                            <p class="mb-0">
+                            <div class="form-group">
+                                <label>NIC (National Identification No)</label>
+                                <div>
+                                    <input type="text" id="card_number" class="form-control" placeholder="00000 00000 0">
+                                </div>
+                            </div>
+                            </p>
+
+                            <p class="mb-0">
+                            <div class="form-group">
+                                <label>Organizational ID</label>
+                                <div>
+                                    <input type="text" id="card_number" class="form-control" placeholder="EX0000000000000">
+                                </div>
+                            </div>
+                            </p>
+
+                            <p class="mb-0">
+                            <div class="form-group">
+                                <label>Rank</label>
+                                <div>
+                                    <select id="rank" name="rank" class="form-control">
+                                        <option>--</option>
+                                        <option>CEO</option>
+                                        <option>CFO</option>
+                                        <option>Manager</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dob">Date of Birth</label>
+                                        <input type="date" class="form-control" id="dob">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="dob">Joining Date</label>
+                                        <input type="date" class="form-control" id="dob">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="custom-control custom-switch mb-2" dir="ltr">
+                                <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
+                                <label class="custom-control-label" for="customSwitch1">Active Member</label>
+                            </div><hr>
+                            <div class="custom-control custom-checkbox mb-3">
+                                <input type="checkbox" class="custom-control-input" id="customCheck1" checked="">
+                                <label class="custom-control-label" for="customCheck1"><b>AGREEMENT> </b>{% lorem 24 w %}</label>
+                            </div>
+
+                            <div class="">
+                                <button type="submit" class="btn btn-success"><i class="fa fa-user"></i>
+                                    Add
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

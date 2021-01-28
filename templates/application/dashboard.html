@@ -1,0 +1,146 @@
+{% extends 'application/base.html' %}
+{% load static %}
+
+{% block seller_base_title %}
+    Dashboard
+{% endblock %}
+
+{% block base_page_css_links %}
+    <link rel="stylesheet" href="{% static 'application/libs/owl.carousel/assets/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'application/libs/owl.carousel/assets/owl.theme.default.min.css' %}">
+{% endblock %}
+
+{% block base_content %}
+
+
+    {# FISRT LINE #}
+    <div class="row">
+        <div class="col-xl-12">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="avatar-xs mr-3">
+                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
+                                                            <i class="mdi mdi-point-of-sale"></i>
+                                                        </span>
+                                </div>
+                                <h5 class="font-size-14 mb-0">Total</h5>
+                            </div>
+                            <div class="text-muted mt-4">
+                                <h4>1,452 <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
+                                <div class="d-flex">
+                                    <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span
+                                        class="ml-2 text-truncate">From previous period</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="avatar-xs mr-3">
+                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
+                                                            <i class="mdi mdi-cart"></i>
+                                                        </span>
+                                </div>
+                                <h5 class="font-size-14 mb-0">MONTH</h5>
+                            </div>
+                            <div class="text-muted mt-4">
+                                <h4>$ 28,452 <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
+                                <div class="d-flex">
+                                    <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span
+                                        class="ml-2 text-truncate">From previous period</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="avatar-xs mr-3">
+                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
+                                                            <i class="mdi mdi-shopping"></i>
+                                                        </span>
+                                </div>
+                                <h5 class="font-size-14 mb-0">YEAR</h5>
+                            </div>
+                            <div class="text-muted mt-4">
+                                <h4>$ 16.2 <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
+
+                                <div class="d-flex">
+                                    <span class="badge badge-soft-warning font-size-12"> 0% </span>
+                                    <span class="ml-2 text-truncate">From previous period</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end row -->
+        </div>
+    </div>
+
+    <div>
+
+        <div class="">
+
+
+            <!-- end row -->
+
+            <div class="row">
+
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">This Year</h4>
+
+                            <div id="column_chart" class="apex-charts" dir="ltr"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">This Month</h4>
+
+                            <div id="line_chart_dashed" class="apex-charts" dir="ltr"></div>
+                        </div>
+                    </div><!--end card-->
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Today</h4>
+
+                            <div id="pie_chart" class="apex-charts" dir="ltr"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block base_page_javascript_links %}
+
+    <script src="{% static 'application/libs/owl.carousel/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'application/js/pages/ico-landing.init.js' %}"></script>
+    <script src="{% static 'application/libs/apexcharts/apexcharts.min.js' %}"></script>
+    <script src="{% static 'application/js/pages/apexcharts.init.js' %}"></script>
+{% endblock %}
+

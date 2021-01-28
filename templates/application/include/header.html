@@ -1,0 +1,260 @@
+{% load static %}
+
+{# MAIN_HEADER #}
+<header id="page-topbar">
+    <div class="navbar-header">
+        <div class="d-flex">
+
+            {# LOGO #}
+            <div class="navbar-brand-box">
+                <a href="" class="logo logo-dark">
+                                <span class="logo-sm">
+{#                                    <b class="text-dark">Orgnization <small>Franchise</small></b>#}
+                                    <img src="{% static 'application/images/logo-dark.png' %}" alt="" height="22">
+                                </span>
+                    <span class="logo-lg">
+{#                        <b class="text-dark">Orgnization <small>Franchise</small></b>#}
+                                    <img src="{% static 'application/images/logo-dark.png' %}" alt="" height="17">
+                                </span>
+                </a>
+
+                <a href="" class="logo logo-light">
+                                <span class="logo-sm">
+{#                                    <b class="text-white">Orgnization <small>Franchise</small></b>#}
+                                    <img src="{% static 'application/images/logo-light.png' %}" alt="" height="22">
+                                </span>
+                    <span class="logo-lg">
+{#                        <b class="text-white">Orgnization <small>Franchise</small></b>#}
+                                    <img src="{% static 'application/images/logo-light.png' %}" alt="" height="19">
+
+                    </span>
+                </a>
+            </div>
+
+            {# LOGO > BUTTON > SMALL_SCREEN #}
+            <button type="button"
+                    class="btn btn-sm px-3 font-size-16 d-lg-none header-item waves-effect waves-light"
+                    data-toggle="collapse" data-target="#topnav-menu-content">
+                <i class="fa fa-fw fa-bars"></i>
+            </button>
+
+        </div>
+
+        <div class="d-flex">
+
+            {# FLAGS #}
+            <div class="dropdown d-none d-lg-inline-block ml-1">
+                <button type="button" class="btn header-item waves-effect" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                    <img class="" src="{% static 'application/images/flags/us.jpg' %}" alt="Header Language"
+                         height="16">
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="{% static 'application/images/flags/spain.jpg' %}" alt="user-image" class="mr-1"
+                             height="12">
+                        <span
+                                class="align-middle">Spanish</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="{% static 'application/images/flags/germany.jpg' %}" alt="user-image" class="mr-1"
+                             height="12">
+                        <span
+                                class="align-middle">German</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="{% static 'application/images/flags/italy.jpg' %}" alt="user-image" class="mr-1"
+                             height="12">
+                        <span
+                                class="align-middle">Italian</span>
+                    </a>
+
+                    <!-- item-->
+                    <a href="javascript:void(0);" class="dropdown-item notify-item">
+                        <img src="{% static 'application/images/flags/russia.jpg' %}" alt="user-image" class="mr-1"
+                             height="12">
+                        <span
+                                class="align-middle">Russian</span>
+                    </a>
+                </div>
+            </div>
+
+            {# FULL-SCREEN #}
+            <div class="dropdown d-none d-lg-inline-block ml-1">
+                <button type="button" class="btn header-item noti-icon waves-effect" data-toggle="fullscreen">
+                    <i class="bx bx-fullscreen"></i>
+                </button>
+            </div>
+
+            {# NOTIFICATIONS #}
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item noti-icon waves-effect"
+                        id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    <i class="bx bx-bell bx-tada"></i>
+                    <span class="badge badge-danger badge-pill">3</span>
+                </button>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
+                     aria-labelledby="page-header-notifications-dropdown">
+                    <div class="p-3">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h6 class="m-0"> Notifications </h6>
+                            </div>
+                            <div class="col-auto">
+                                <a href="#" class="small"> View All</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div data-simplebar="init" style="max-height: 230px;">
+                        <div class="simplebar-wrapper" style="margin: 0px;">
+                            <div class="simplebar-height-auto-observer-wrapper">
+                                <div class="simplebar-height-auto-observer"></div>
+                            </div>
+                            <div class="simplebar-mask">
+                                <div class="simplebar-offset" style="right: 0px; bottom: 0px;">
+                                    <div class="simplebar-content-wrapper"
+                                         style="height: auto; overflow: hidden;">
+                                        <div class="simplebar-content" style="padding: 0px;">
+                                            <a href="" class="text-reset notification-item">
+                                                <div class="media">
+                                                    <div class="avatar-xs mr-3">
+                                                <span class="avatar-title bg-danger rounded-circle font-size-16">
+                                                    <i class="bx bx-bar-chart"></i>
+                                                </span>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mt-0 mb-1">Evaluation required</h6>
+                                                        <div class="font-size-12 text-muted">
+                                                            <p class="mb-1">You didn't evaluated your employees yesterday</p>
+                                                            <p class="mb-0"><i
+                                                                    class="mdi mdi-clock-outline"></i> 3
+                                                                min ago</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="" class="text-reset notification-item">
+                                                <div class="media">
+                                                    <img src="{% static 'application/images/users/avatar-3.jpg' %}"
+                                                         class="mr-3 rounded-circle avatar-xs" alt="user-pic">
+                                                    <div class="media-body">
+                                                        <h6 class="mt-0 mb-1">Joseph Call</h6>
+                                                        <div class="font-size-12 text-muted">
+                                                            <p class="mb-1">{% lorem 10 w %}</p>
+                                                            <p class="mb-0"><i
+                                                                    class="mdi mdi-clock-outline"></i> 1
+                                                                hours ago</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="" class="text-reset notification-item">
+                                                <div class="media">
+                                                    <div class="avatar-xs mr-3">
+                                                <span class="avatar-title bg-success rounded-circle font-size-16">
+                                                    <i class="bx bx-badge-check"></i>
+                                                </span>
+                                                    </div>
+                                                    <div class="media-body">
+                                                        <h6 class="mt-0 mb-1">Rating available</h6>
+                                                        <div class="font-size-12 text-muted">
+                                                            <p class="mb-1">{% lorem 10 w %}</p>
+                                                            <p class="mb-0"><i
+                                                                    class="mdi mdi-clock-outline"></i> 3
+                                                                min ago</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+
+                                            <a href="" class="text-reset notification-item">
+                                                <div class="media">
+                                                    <img src="{% static 'application/images/users/avatar-2.jpg' %}"
+                                                         class="mr-3 rounded-circle avatar-xs" alt="user-pic">
+                                                    <div class="media-body">
+                                                        <h6 class="mt-0 mb-1">Mark is un-available</h6>
+                                                        <div class="font-size-12 text-muted">
+                                                            <p class="mb-1">{% lorem 10 w %}</p>
+                                                            <p class="mb-0"><i
+                                                                    class="mdi mdi-clock-outline"></i> 1
+                                                                hours ago</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="simplebar-placeholder" style="width: 0px; height: 0px;"></div>
+                        </div>
+                        <div class="simplebar-track simplebar-horizontal" style="visibility: hidden;">
+                            <div class="simplebar-scrollbar"
+                                 style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                        </div>
+                        <div class="simplebar-track simplebar-vertical" style="visibility: hidden;">
+                            <div class="simplebar-scrollbar"
+                                 style="transform: translate3d(0px, 0px, 0px); display: none;"></div>
+                        </div>
+                    </div>
+                    <div class="p-2 border-top">
+                        <a class="btn btn-sm btn-link font-size-14 btn-block text-center"
+                           href="javascript:void(0)">
+                            <i class="mdi mdi-arrow-right-circle mr-1"></i> View More..
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {# USER #}
+            <div class="dropdown d-inline-block">
+                <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="rounded-circle header-profile-user"
+                         src="{% static 'application/images/users/avatar-7.jpg' %}"
+                         alt="Header Avatar">
+                    <span class="d-none d-xl-inline-block ml-1">MARK</span>
+                    <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <!-- item-->
+                    <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i>
+                        Profile</a>
+                    <a class="dropdown-item d-block" href="#">
+                        <i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+                        <i class="bx bx-envelope font-size-16 align-middle mr-1"></i> Email Accounts
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <i class="bx bx-lock font-size-16 align-middle mr-1"></i> Password Change
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item text-danger" href="#"><i
+                            class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
+                </div>
+            </div>
+
+            {#            <div class="dropdown d-inline-block">#}
+            {#                <button type="button" class="btn header-item noti-icon right-bar-toggle waves-effect">#}
+            {#                    <i class="bx bx-cog bx-spin"></i>#}
+            {#                </button>#}
+            {#            </div>#}
+
+        </div>
+    </div>
+</header>
+
+{# SECOND_HEADER #}
+{% include 'application/include/sub_header.html' %}
+
+
+
