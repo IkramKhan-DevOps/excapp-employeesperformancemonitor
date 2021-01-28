@@ -1,0 +1,95 @@
+{% load static %}
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title>
+        EMP |
+        {% block seller_base_title %}
+            Home
+        {% endblock %}
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="EMP Admin Panel" name="description">
+    <meta content="mark" name="author">
+
+    <link rel="shortcut icon" href="{% static 'application/images/favicon.ico' %}">
+
+    {% block base_theme %}
+        <link href="{% static 'application/css/bootstrap.min.css' %}" id="bootstrap-style" rel="stylesheet">
+        <link href="{% static 'application/css/app.min.css' %}" id="app-style" rel="stylesheet">
+    {% endblock %}
+
+    <link href="{% static 'application/css/icons.min.css' %}" rel="stylesheet">
+    {% block base_page_css_links %}
+
+    {% endblock %}
+
+</head>
+
+<body data-topbar="dark" data-layout="horizontal">
+
+{% block base_no_content %}
+    <div id="layout-wrapper">
+
+        {% block base_header %}
+            {% include 'application/include/header.html' %}
+        {% endblock %}
+
+        <!-- ============================================================== -->
+        <!-- Start right Content here -->
+        <!-- ============================================================== -->
+        <div class="main-content">
+
+            <div class="page-content">
+                <div class="container-fluid">
+
+                    <!-- start page title -->
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="page-title-box d-flex align-items-center justify-content-between">
+
+                                <h4 class="mb-0 font-size-18">
+                                    {% block base_page_heading %} {% endblock %}
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-12">
+
+                            {% block base_content %}{% endblock %}
+
+                        </div>
+                    </div>
+
+                </div> <!-- container-fluid -->
+            </div>
+
+        </div>
+        <!-- end main content-->
+
+    </div>
+{% endblock %}
+
+
+{% block base_theme_activation %}
+
+{% endblock %}
+
+
+<!-- JAVASCRIPT -->
+<script src="{% static 'application/libs/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'application/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'application/libs/metismenu/metisMenu.min.js' %}"></script>
+<script src="{% static 'application/libs/simplebar/simplebar.min.js' %}"></script>
+<script src="{% static 'application/libs/node-waves/waves.min.js' %}"></script>
+
+{% block base_page_javascript_links %}{% endblock %}
+
+<script src="{% static 'application/js/app.js' %}"></script>
+</body>
+</html>
+
+{% block base_page_javascript_code %}{% endblock %}

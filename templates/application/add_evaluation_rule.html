@@ -1,0 +1,60 @@
+{% extends 'application/base.html' %}
+{% load static %}
+
+{% block base_title %}
+    Add-Evaluation Rule
+{% endblock %}
+
+{% block base_page_heading %}
+    Add Employee Performance Evaluation Rule
+{% endblock %}
+
+{% block base_content %}
+    <div class="container">
+
+
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-7">
+                <div class="card">
+                    <div class="card-body">
+
+                        <p class="mb-0">
+                        <div class="form-group">
+                            <label>Sequence No</label>
+                            <div>
+                                <input type="number" id="no" class="form-control" placeholder="1">
+                            </div>
+                        </div>
+                        </p>
+
+                        <p class="mb-0">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <div>
+                                <input type="text" id="no" class="form-control" placeholder="Team Work">
+                            </div>
+                        </div>
+                        </p>
+
+                        <p class="mb-0">
+                        <div class="form-group">
+                            <label>Description</label>
+                            <div>
+                                <textarea rows="5" class="form-control" id="desc" name="desc" placeholder="{% lorem 20 w %}"></textarea>
+                            </div>
+                        </div>
+                        </p>
+
+
+                        <p class="card-text"></p>
+                        <button type="submit" class="btn btn-success"><i class="fa fa-plus"></i>
+                            Add
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
