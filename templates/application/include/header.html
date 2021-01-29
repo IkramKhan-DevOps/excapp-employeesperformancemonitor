@@ -98,7 +98,7 @@
                         id="page-header-notifications-dropdown" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                     <i class="bx bx-bell bx-tada"></i>
-                    <span class="badge badge-danger badge-pill">3</span>
+                    <span class="badge badge-danger badge-pill">1</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right p-0"
                      aria-labelledby="page-header-notifications-dropdown">
@@ -130,61 +130,14 @@
                                                 </span>
                                                     </div>
                                                     <div class="media-body">
-                                                        <h6 class="mt-0 mb-1">Evaluation required</h6>
+                                                        <h6 class="mt-0 mb-1">Notifitcaions Not Available </h6>
                                                         <div class="font-size-12 text-muted">
-                                                            <p class="mb-1">You didn't evaluated your employees yesterday</p>
+                                                            <p class="mb-1">
+                                                                Please provide document to developer for notifications system.
+                                                            </p>
                                                             <p class="mb-0"><i
-                                                                    class="mdi mdi-clock-outline"></i> 3
+                                                                    class="mdi mdi-clock-outline"></i> 0
                                                                 min ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="" class="text-reset notification-item">
-                                                <div class="media">
-                                                    <img src="{% static 'application/images/users/avatar-3.jpg' %}"
-                                                         class="mr-3 rounded-circle avatar-xs" alt="user-pic">
-                                                    <div class="media-body">
-                                                        <h6 class="mt-0 mb-1">Joseph Call</h6>
-                                                        <div class="font-size-12 text-muted">
-                                                            <p class="mb-1">{% lorem 10 w %}</p>
-                                                            <p class="mb-0"><i
-                                                                    class="mdi mdi-clock-outline"></i> 1
-                                                                hours ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="" class="text-reset notification-item">
-                                                <div class="media">
-                                                    <div class="avatar-xs mr-3">
-                                                <span class="avatar-title bg-success rounded-circle font-size-16">
-                                                    <i class="bx bx-badge-check"></i>
-                                                </span>
-                                                    </div>
-                                                    <div class="media-body">
-                                                        <h6 class="mt-0 mb-1">Rating available</h6>
-                                                        <div class="font-size-12 text-muted">
-                                                            <p class="mb-1">{% lorem 10 w %}</p>
-                                                            <p class="mb-0"><i
-                                                                    class="mdi mdi-clock-outline"></i> 3
-                                                                min ago</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </a>
-
-                                            <a href="" class="text-reset notification-item">
-                                                <div class="media">
-                                                    <img src="{% static 'application/images/users/avatar-2.jpg' %}"
-                                                         class="mr-3 rounded-circle avatar-xs" alt="user-pic">
-                                                    <div class="media-body">
-                                                        <h6 class="mt-0 mb-1">Mark is un-available</h6>
-                                                        <div class="font-size-12 text-muted">
-                                                            <p class="mb-1">{% lorem 10 w %}</p>
-                                                            <p class="mb-0"><i
-                                                                    class="mdi mdi-clock-outline"></i> 1
-                                                                hours ago</p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -225,16 +178,9 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href="#"><i class="bx bx-user font-size-16 align-middle mr-1"></i>
+                    <a class="dropdown-item" href="/admin/auth/user/{{ request.user.pk }}/change/"><i class="bx bx-user font-size-16 align-middle mr-1"></i>
                         Profile</a>
-                    <a class="dropdown-item d-block" href="#">
-                        <i class="bx bx-wrench font-size-16 align-middle mr-1"></i> Settings
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">
-                        <i class="bx bx-envelope font-size-16 align-middle mr-1"></i> Email Accounts
-                    </a>
-                    <a class="dropdown-item" href="#">
+                    <a class="dropdown-item" href="/admin/password_change/">
                         <i class="bx bx-lock font-size-16 align-middle mr-1"></i> Password Change
                     </a>
                     <div class="dropdown-divider"></div>

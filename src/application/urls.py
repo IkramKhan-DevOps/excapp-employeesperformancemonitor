@@ -16,14 +16,14 @@ Including another URLconf
 
 from django.urls import path
 from src.application.views import (
-    dashboard, evaluate,
+    dashboard, help_view,
     employees, add_employee, update_employee, delete_employee, employee,
-    performance_measures, add_rule, update_rule, delete_rule
-)
+    tasks, task, add_task, update_task, delete_task)
 
 app_name = 'application'
 urlpatterns = [
     path('dashboard/', dashboard, name='dashboard'),
+    path('help/', help_view, name='help'),
 
     path('employees/', employees, name='employees'),
     path('employee/<int:pk>/', employee, name='employee'),
@@ -31,9 +31,10 @@ urlpatterns = [
     path('update/employee/<int:pk>/', update_employee, name='update_employee'),
     path('delete/employee/<int:pk>/', delete_employee, name='delete_employee'),
 
-    path('evaluate/', evaluate, name='evaluate'),
-    path('performance_measures/', performance_measures, name='performance_measures'),
-    path('add/rule/', add_rule, name='add_rule'),
-    path('update/rule/<int:pk>/', update_rule, name='update_rule'),
-    path('delete/rule/<int:pk>/', delete_rule, name='delete_rule'),
+    path('tasks/', tasks, name='tasks'),
+    path('task/<int:pk>/', task, name='task'),
+    path('add/task/', add_task, name='add_task'),
+    path('update/task/<int:pk>/', update_task, name='update_task'),
+    path('delete/task/<int:pk>/', delete_task, name='delete_task'),
+
 ]

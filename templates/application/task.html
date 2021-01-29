@@ -1,0 +1,55 @@
+{% extends 'application/base.html' %}
+{% load static %}
+{% block base_title %}Task{% endblock %}
+
+{% block base_page_css_links %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+{% endblock %}
+
+
+
+{% block base_content %}
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card bg-primary">
+                <div class="card-body py-5">
+                    <div class="text-white-50 text-center">
+                        <h1 class="text-white font-weight-semibold mb-3 hero-title"><i class="bx bx-calendar"></i></h1>
+                        <p class="m-0"><b>{{ task.start_time }}</b> - <b>{{ task.end_time }}</b></p>
+                        <h1 class="text-white font-weight-semibold mb-3 hero-title">{{ task.name }}</h1>
+                        <p class="m-0">{{ task.description }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end row -->
+    <!-- end container -->
+
+    {% if task.detailed_description %}
+
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="p-4">
+                            {{ task.detailed_description | safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+{% endblock %}
+
+{% block base_page_javascript_links %}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+{% endblock %}
+
+{% block base_page_javascript_code %}
+
+{% endblock %}

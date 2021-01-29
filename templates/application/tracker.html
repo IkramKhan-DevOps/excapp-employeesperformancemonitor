@@ -1,0 +1,77 @@
+{% extends 'application/base.html' %}
+{% load static %}
+
+{% block seller_base_title %}
+    Tracker
+{% endblock %}
+
+{% block base_page_heading %}
+    Employee Tracker
+    <div class="row mt-2">
+        <div class="col-6">
+            <select class="form-control">
+                <option>Select Type</option>
+            </select>
+        </div>
+        <div class="col-6">
+            <select class="form-control">
+                <option>Today</option>
+            </select>
+        </div>
+    </div>
+{% endblock %}
+
+{% block base_content %}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Today's Race</h4>
+                    <p class="card-title-desc mb-5">
+                        Keep focus You are in race now _ Progress bar is live Updating Your Progress <img src="{% static 'Zl7n.gif' %}">
+                    </p>
+                    <div class="">
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated py-4 text-right" role="progressbar" style="width: 90%;" aria-valuenow="90"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Flint <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated py-4 text-right" role="progressbar" style="width: 80%;" aria-valuenow="80"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Mark <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated py-4 text-right" role="progressbar" style="width: 60%;" aria-valuenow="60"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Jane <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated py-4 text-right" role="progressbar" style="width: 50%;" aria-valuenow="50"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Stephen<i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated py-4 text-right" role="progressbar" style="width: 30%;" aria-valuenow="30"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Waseem <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

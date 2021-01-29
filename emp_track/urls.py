@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', include('src.application.urls', namespace='application')),
-    path('', include('src.site.urls', namespace='site')),
+    # path('', include('src.site.urls', namespace='site')),
 ]
 if DEBUG:
     urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
