@@ -36,31 +36,17 @@
                                 </div>
                             </div>
 
-                            {# ADMINISTRATION #}
+                            {# TASKS #}
                             <div class="dropdown">
                                 <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
                                    role="button" data-toggle="dropdown" aria-haspopup="true"
                                    aria-expanded="false">
-                                    Administration
+                                    Tasks
                                     <div class="arrow-down"></div>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                    <a href="" class="dropdown-item">View All</a>
-                                    <a href="" class="dropdown-item">Add New</a>
-                                </div>
-                            </div>
-
-                            {# AVA #}
-                            <div class="dropdown">
-                                <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
-                                   role="button" data-toggle="dropdown" aria-haspopup="true"
-                                   aria-expanded="false">
-                                    Evaluation
-                                    <div class="arrow-down"></div>
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="topnav-email">
-                                    <a href="{% url 'application:performance_measures' %}" class="dropdown-item">Rules</a>
-                                    <a href="{% url 'application:add_rule' %}" class="dropdown-item">Add New</a>
+                                    <a href="{% url 'application:tasks' %}" class="dropdown-item">View All</a>
+                                    <a href="{% url 'application:add_task' %}" class="dropdown-item">Add New</a>
                                 </div>
                             </div>
 
@@ -69,19 +55,19 @@
                     {# --------------------------------------------------------------------------------------------- #}
 
                     {# REPORTS #}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="bx bxs-report mr-2"></i>Reports
-                            <div class="arrow-down"></div>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="topnav-pages">
-
-                            <a href="" class="dropdown-item">Daily</a>
-                            <a href="" class="dropdown-item">Monthly</a>
-                            <a href="" class="dropdown-item">Yearly</a>
-                            <a href="" class="dropdown-item">Overall</a>
-                        </div>
-                    </li>
+{#                    <li class="nav-item dropdown">#}
+{#                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                            <i class="bx bxs-report mr-2"></i>Reports#}
+{#                            <div class="arrow-down"></div>#}
+{#                        </a>#}
+{#                        <div class="dropdown-menu" aria-labelledby="topnav-pages">#}
+{##}
+{#                            <a href="" class="dropdown-item">Daily</a>#}
+{#                            <a href="" class="dropdown-item">Monthly</a>#}
+{#                            <a href="" class="dropdown-item">Yearly</a>#}
+{#                            <a href="" class="dropdown-item">Overall</a>#}
+{#                        </div>#}
+{#                    </li>#}
                     {# --------------------------------------------------------------------------------------------- #}
 
                     {# SECURITY #}
@@ -92,14 +78,14 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
-                            <a href="" class="dropdown-item">Privileges</a>
-                            <a href="" class="dropdown-item">Licenses</a>
-                            <a href="" class="dropdown-item">Configuration</a>
+                            <a href="/admin/" class="dropdown-item">Visit Developers Panel</a>
+                            <a href="/admin/auth/user/" class="dropdown-item">User Configuration</a>
+                            <a href="/admin/auth/group/" class="dropdown-item">Permissions and Groups</a>
                         </div>
                     </li>
                     {# --------------------------------------------------------------------------------------------- #}
 
-                    {# SECURITY #}
+                    {# APPS #}
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="bx bx-flag mr-2"></i>Apps
@@ -107,7 +93,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
-                            <a href="" class="dropdown-item">Website Builder</a>
+                            <a href="" class="dropdown-item text-danger">Website Builder</a>
                         </div>
                     </li>
                     {# --------------------------------------------------------------------------------------------- #}

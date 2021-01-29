@@ -14,123 +14,238 @@
 
 
     {# FISRT LINE #}
+    <p class="card-title">Overall Tasks Report</p>
     <div class="row">
         <div class="col-xl-12">
+
             <div class="row">
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="card">
+
                         <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="avatar-xs mr-3">
-                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
-                                                            <i class="mdi mdi-point-of-sale"></i>
-                                                        </span>
-                                </div>
-                                <h5 class="font-size-14 mb-0">Total</h5>
-                            </div>
-                            <div class="text-muted mt-4">
-                                <h4>1,452 <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
-                                <div class="d-flex">
-                                    <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span
-                                        class="ml-2 text-truncate">From previous period</span>
-                                </div>
+                            <div class="text-muted text-center">
+                                <h2 class="mb-4"><i
+                                        class="fa fa-calendar-alt p-3 bg-soft-primary rounded-circle text-primary"></i>
+                                </h2>
+                                <h5 class="font-size-14 mb-1">Total Tasks</h5>
+                                <h4>203</h4>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="avatar-xs mr-3">
-                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
-                                                            <i class="mdi mdi-cart"></i>
-                                                        </span>
-                                </div>
-                                <h5 class="font-size-14 mb-0">MONTH</h5>
-                            </div>
-                            <div class="text-muted mt-4">
-                                <h4>$ 28,452 <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
-                                <div class="d-flex">
-                                    <span class="badge badge-soft-success font-size-12"> + 0.2% </span> <span
-                                        class="ml-2 text-truncate">From previous period</span>
-                                </div>
+                            <div class="text-muted text-center">
+                                <h2 class="mb-4"><i
+                                        class="fa fa-calendar-check p-3 bg-soft-success rounded-circle text-success"></i>
+                                </h2>
+                                <h5 class="font-size-14 mb-1">Completed Tasks</h5>
+                                <h4>195</h4>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-3">
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex align-items-center mb-3">
-                                <div class="avatar-xs mr-3">
-                                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary font-size-18">
-                                                            <i class="mdi mdi-shopping"></i>
-                                                        </span>
-                                </div>
-                                <h5 class="font-size-14 mb-0">YEAR</h5>
-                            </div>
-                            <div class="text-muted mt-4">
-                                <h4>$ 16.2 <i class="mdi mdi-chevron-up ml-1 text-success"></i></h4>
-
-                                <div class="d-flex">
-                                    <span class="badge badge-soft-warning font-size-12"> 0% </span>
-                                    <span class="ml-2 text-truncate">From previous period</span>
-                                </div>
+                            <div class="text-muted text-center">
+                                <h2 class="mb-4"><i
+                                        class="fa fa-calendar-times p-3 bg-soft-danger rounded-circle text-danger"></i>
+                                </h2>
+                                <h5 class="font-size-14 mb-1">Cancelled Tasks</h5>
+                                <h4>02</h4>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-sm-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="text-muted text-center">
+                                <h2 class="mb-4"><i
+                                        class="fa fa-list p-3 bg-soft-warning rounded-circle text-warning"></i></h2>
+                                <h5 class="font-size-14 mb-1">Running Tasks</h5>
+                                <h4>06</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
             <!-- end row -->
         </div>
     </div>
+    <br>
 
-    <div>
+    <p class="card-title">Current Running Tasks</p>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">TASK: Packing Candies</h4>
+                    <p class="card-title-desc mb-5">
+                        10 employees have been assigned to this task _ task start time 10:00 upto 01:00 pm
+                    </p>
+                    <div class="">
 
-        <div class="">
-
-
-            <!-- end row -->
-
-            <div class="row">
-
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">This Year</h4>
-
-                            <div id="column_chart" class="apex-charts" dir="ltr"></div>
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 90%;" aria-valuenow="90"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Flint <i class="fa fa-running bx-tada"></i></p>
+                            </div>
                         </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 80%;" aria-valuenow="80"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Mark <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 60%;" aria-valuenow="60"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Jane <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 50%;" aria-valuenow="50"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Stephen<i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 30%;" aria-valuenow="30"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Waseem <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">TASK: Packing Candies</h4>
+                    <p class="card-title-desc mb-5">
+                        10 employees have been assigned to this task _ task start time 10:00 upto 01:00 pm
+                    </p>
+                    <div class="">
 
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">This Month</h4>
-
-                            <div id="line_chart_dashed" class="apex-charts" dir="ltr"></div>
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 90%;" aria-valuenow="90"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Flint <i class="fa fa-running bx-tada"></i></p>
+                            </div>
                         </div>
-                    </div><!--end card-->
-                </div>
 
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-4">Today</h4>
-
-                            <div id="pie_chart" class="apex-charts" dir="ltr"></div>
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 80%;" aria-valuenow="80"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Mark <i class="fa fa-running bx-tada"></i></p>
+                            </div>
                         </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 60%;" aria-valuenow="60"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Jane <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 50%;" aria-valuenow="50"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Stephen<i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 30%;" aria-valuenow="30"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Waseem <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">TASK: Packing Candies</h4>
+                    <p class="card-title-desc mb-5">
+                        10 employees have been assigned to this task _ task start time 10:00 upto 01:00 pm
+                    </p>
+                    <div class="">
 
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-success progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 90%;" aria-valuenow="90"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Flint <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
 
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 80%;" aria-valuenow="80"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Mark <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-info progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 60%;" aria-valuenow="60"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Jane <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 50%;" aria-valuenow="50"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Stephen<i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                        <div class="progress mb-4" style="height: 40px;">
+                            <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated py-4 text-right"
+                                 role="progressbar" style="width: 30%;" aria-valuenow="30"
+                                 aria-valuemin="0" aria-valuemax="100">
+                                <p class="h3 p-2 text-white">Waseem <i class="fa fa-running bx-tada"></i></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

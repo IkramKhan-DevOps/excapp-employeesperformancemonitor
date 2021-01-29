@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
 {% endblock %}
 
-{% block base_page_heading %}Your Employees{% endblock %}
+{% block base_page_heading %}Tasks List{% endblock %}
 
 
 {% block base_content %}
@@ -16,46 +16,47 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-right mb-4">
-                        <a class="btn btn-sm btn-success" href="{% url 'application:add_employee' %}"><i class="fa fa-user-plus"></i> Add Employee</a>
+                        <a class="btn btn-sm btn-success" href="{% url 'application:add_task' %}"><i
+                                class="fa fa-calendar-plus"></i> Add Task</a>
                     </div>
                     <div class="table-responsive mb-0">
                         <table id="employees" class="table table-striped">
                             <thead class="">
                             <tr>
                                 <th data-priority="1">ID</th>
-                                <th data-priority="3">Name</th>
-                                <th data-priority="3">Phone</th>
-                                <th data-priority="6">Email</th>
-                                <th data-priority="6">Role</th>
-                                <th data-priority="6">Joined</th>
-                                <th data-priority="3">Status</th>
-                                <th data-priority="3">Action</th>
+                                <th data-priority="1">Name</th>
+                                <th data-priority="3">Start Time</th>
+                                <th data-priority="3">End Time</th>
+                                <th data-priority="6">Active</th>
+                                <th data-priority="6">Created on</th>
+                                <th data-priority="6">Last updated</th>
+                                <th data-priority="6">Action</th>
                             </tr>
                             </thead>
                             <tbody class="small">
-                            {% if employees %}
-                                {% for emp in employees %}
+                            {% if tasks %}
+                                {% for task in tasks %}
 
                                     <tr>
-                                        <th>{{ emp.pk }}</th>
-                                        <td>{{ emp.first_name }} {{ emp.last_name }}</td>
-                                        <td>{{ emp.contact_no }}</td>
-                                        <td>{{ emp.email }}</td>
-                                        <td>{{ emp.get_rank_display }}</td>
-                                        <td>{{ emp.joined_on }}</td>
+                                        <th>{{ task.pk }}</th>
+                                        <td>{{ task.name }}</td>
+                                        <td>{{ task.start_time }}</td>
+                                        <td>{{ task.end_time }}</td>
                                         <td>
-                                            {% if emp.is_active %}
+                                            {% if task.is_active %}
                                                 <i class="fa fa-check text-success"></i>
                                             {% else %}
                                                 <i class="fa fa-times text-danger"></i>
                                             {% endif %}
                                         </td>
+                                        <td>{{ task.created_on }}</td>
+                                        <td>{{ task.updated_on }}</td>
                                         <td>
-                                            <a href="{% url 'application:update_employee' emp.pk %}"><i
+                                            <a href="{% url 'application:update_task' task.pk %}"><i
                                                     class="fa fa-edit text-primary"></i></a>
-                                            <a href="{% url 'application:employee' emp.pk %}"><i
+                                            <a href="{% url 'application:task' task.pk %}"><i
                                                     class="fa fa-chart-bar text-primary"></i></a>
-                                            <a href="{% url 'application:delete_employee' emp.pk %}"><i
+                                            <a href="{% url 'application:delete_task' task.pk %}"><i
                                                     class="fa fa-trash text-danger"></i></a>
                                         </td>
                                     </tr>
@@ -87,6 +88,7 @@
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.colVis.min.js"></script>
+
 {% endblock %}
 
 {% block base_page_javascript_code %}

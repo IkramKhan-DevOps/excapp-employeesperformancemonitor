@@ -4,30 +4,23 @@
 
 
 {% block base_title %}
-    Add/Update Employee
+    Add/Update-Task
 {% endblock %}
 
 {% block base_page_heading %}
-    Add/Update Employee
+    Add/Update Task
 {% endblock %}
 
 {% block base_content %}
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-sm-7">
+            <div class="col-12 col-sm-10">
                 <div class="card">
                     <div class="card-body p-4">
 
-                        {% if form.instance.profile_image%}
-                            <div class="text-center">
-                                <img src="{{ form.instance.profile_image.url }}"
-                                     class="rounded-circle img-fluid img-responsive" height="200" width="200">
-                            </div>
-                            <hr>
-                        {% endif %}
-
                         <form method="post" enctype="multipart/form-data">
                             {% csrf_token %}
+                            {{ form.media }}
                             {{ form|crispy }}
                             <button class="btn btn-success"><i class="fa fa-check"></i> Submit</button>
                         </form>
