@@ -18,18 +18,24 @@ from django.urls import path
 from src.application.views import (
     dashboard, help_view,
     employees, add_employee, update_employee, delete_employee, employee,
-    tasks, task, add_task, update_task, delete_task)
+    tasks, task, add_task, update_task, delete_task, view_login, view_logout,
+    report
+)
 
 app_name = 'application'
 urlpatterns = [
-    path('dashboard/', dashboard, name='dashboard'),
+    path('', dashboard, name='dashboard'),
     path('help/', help_view, name='help'),
+    path('accounts/login/', view_login, name='login'),
+    path('accounts/logout/', view_logout, name='logout'),
 
     path('employees/', employees, name='employees'),
     path('employee/<int:pk>/', employee, name='employee'),
     path('add/employee/', add_employee, name='add_employee'),
     path('update/employee/<int:pk>/', update_employee, name='update_employee'),
     path('delete/employee/<int:pk>/', delete_employee, name='delete_employee'),
+
+    path('report/', report, name='report'),
 
     path('tasks/', tasks, name='tasks'),
     path('task/<int:pk>/', task, name='task'),

@@ -54,20 +54,17 @@
                     </li>
                     {# --------------------------------------------------------------------------------------------- #}
 
-                    {# REPORTS #}
-{#                    <li class="nav-item dropdown">#}
-{#                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
-{#                            <i class="bx bxs-report mr-2"></i>Reports#}
-{#                            <div class="arrow-down"></div>#}
-{#                        </a>#}
-{#                        <div class="dropdown-menu" aria-labelledby="topnav-pages">#}
-{##}
-{#                            <a href="" class="dropdown-item">Daily</a>#}
-{#                            <a href="" class="dropdown-item">Monthly</a>#}
-{#                            <a href="" class="dropdown-item">Yearly</a>#}
-{#                            <a href="" class="dropdown-item">Overall</a>#}
-{#                        </div>#}
-{#                    </li>#}
+{#                     REPORTS#}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-pages" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="bx bxs-report mr-2"></i>Reports
+                            <div class="arrow-down"></div>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="topnav-pages">
+
+                            <a href="{% url 'application:report' %}" class="dropdown-item">Daily</a>
+                        </div>
+                    </li>
                     {# --------------------------------------------------------------------------------------------- #}
 
                     {# SECURITY #}
@@ -93,7 +90,7 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="topnav-pages">
 
-                            <a href="" class="dropdown-item text-danger">Website Builder</a>
+                            <a href="#" class="dropdown-item text-danger">Website Builder</a>
                         </div>
                     </li>
                     {# --------------------------------------------------------------------------------------------- #}

@@ -1,28 +1,13 @@
+{% extends 'application/base.html' %}
 {% load static %}
-<html lang="en"><head>
-    <link rel="icon" href="{% static 'application/images/favicon.ico' %}">
-    <title>EMS |
+{% load crispy_forms_tags %}
 
 
-        Project Statistics
+{% block base_title %}
+    Project State
+{% endblock %}
 
-
-    </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <link rel="stylesheet" href="{% static 'application/css/app.min.css' %}">
-    <link rel="stylesheet" href="{% static 'application/css/bootstrap.min.css' %}">
-
-    <link rel="stylesheet" href="{% static 'application/css/icons.min.css' %}">
-
-</head>
-<body data-topbar="dark" data-layout="horizontal">
-
-<!-- Begin page -->
-<div id="layout-wrapper">
+{% block base_no_content %}
     <div class="my-4 row justify-content-center">
         <div class="col-11 col-sm-8">
             <div class="text-center">
@@ -272,16 +257,4 @@
             </div>
         </div>
     </div>
-
-
-</div>
-
-<script src="{% static 'application/libs/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'application/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'application/libs/metismenu/metisMenu.min.js' %}"></script>
-<script src="{% static 'application/libs/simplebar/simplebar.min.js' %}"></script>
-<script src="{% static 'application/libs/node-waves/waves.min.js' %}"></script>
-
-<!-- App js -->
-<script src="{% static 'application/js/app.js' %}"></script>
-</body></html>
+{% endblock %}

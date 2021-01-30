@@ -1,0 +1,130 @@
+{% extends 'application/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block base_title %}
+    Login
+{% endblock %}
+
+{% block base_no_content %}
+    <div class="home-btn d-none d-sm-block">
+        <a href="{% url 'application:help' %}" class="text-dark"><i class="fas fa-home h2"></i></a>
+    </div>
+
+    <div class="account-pages my-5 pt-sm-5">
+
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-5">
+                    <div class="card overflow-hidden">
+                        <div class="bg-soft-primary">
+                            <div class="row">
+                                <div class="col-7">
+                                    <div class="text-primary p-4">
+                                        <h5 class="text-primary">Welcome Back !</h5>
+                                        <p>Sign in to continue to Employee Performance Tracking System.</p>
+                                    </div>
+                                </div>
+                                <div class="col-5 align-self-end">
+                                    <img src="{% static 'application/images/profile-img.png' %}" alt=""
+                                         class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body pt-0">
+                            <div>
+                                <a href="/">
+                                    <div class="avatar-md profile-user-wid mb-4">
+                                            <span class="avatar-title rounded-circle bg-light">
+                                                <img src="{% static 'application/logo-dark.png' %}" alt=""
+                                                     class="rounded-circle"
+                                                     height="34">
+                                            </span>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="p-2">
+                                <form method="post">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}
+                                    {% if request.GET.next %}
+                                        <input type="hidden" name="next" value="{{ request.GET.next }}">
+                                    {% endif %}
+                                    <p class="text-muted small">
+                                        There is no different login panel for <b>administrators</b> and <b>employees</b>
+                                        both needs to login here, system automatically detects your role and leads you
+                                        towards your portal.
+                                    </p>
+                                    <button type="submit" class="btn btn-success"><i class="fa fa-user-lock"></i> Log In
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="mt-5 text-center">
+                        <p>
+                            copyright © 2021 - {% now 'Y' %} Employee Performance Tracker<br>
+                            Designed and Developed by
+                            <a class="font-weight-bolder" href="https://exarth.com/" target="_blank">
+                                <i class="mdi mdi-earth"></i> Exarth
+                            </a>
+                        </p>
+                        <p class="card-title">
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#exampleModal">
+                                Need Any Help ?
+                            </button>
+
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-exclamation-circle"></i> System
+                        Information</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body py-5">
+                    <div class="pb-5 text-center">
+                        <img src="{% static 'application/logo-dark.png' %}" height="100" width="100">
+                    </div>
+                    <p>
+                        Project <b>Employee Performance Tracking System</b> is under development, currently this is
+                        testing version you may face no of errors bugs and problems but at the end you will see fast,
+                        secure and saleable product.
+                    </p>
+                    <p>
+                        There are two system users <b>ROOT/ADMINISTRATOR</b> and <b>EMPLOYEE</b> both of them have
+                        different interfaces, access-levels, features and functions _ to test this system start with
+                        given accounts.
+                    </p>
+                    <p>
+                        ROOTUSER > username: <b>root</b> password: <b>poiu_root</b><br>
+                        EMPLOYEE > username: <b>emp</b> password: <b>poiu_emp</b><br>
+                    </p>
+                    <p class="card-text">
+                        Need help on project development <a href="{% url 'application:help' %}">CLICK ME</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block base_page_javascript_code %}
+
+{% endblock %}

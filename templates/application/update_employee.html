@@ -1,0 +1,83 @@
+{% extends 'application/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+
+{% block base_title %}
+    Update Employee
+{% endblock %}
+
+{% block base_page_heading %}
+    Update Employee : {{ pk }} <br>
+    <a href="{% url 'application:add_employee' %}" class="btn btn-success btn-sm mt-1">Add New</a>
+{% endblock %}
+
+{% block base_content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="card">
+                    <div class="card-body p-4">
+
+                        <div>
+                            <p class="card-title">Other Details</p>
+                        </div>
+
+                        {% if emp_form.instance.profile_image %}
+                            <div class="text-center">
+                                <img src="{{ emp_form.instance.profile_image.url }}"
+                                     class="rounded-circle img-fluid img-responsive" height="200" width="200">
+                            </div>
+                            <hr>
+                        {% endif %}
+
+                        <form method="post" action="/update/employee/{{ pk }}/?action=other"
+                              enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {{ emp_form|crispy }}
+                            <button class="btn btn-success"><i class="fa fa-check"></i> Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-body p-4">
+
+                        <div>
+                            <p class="card-title">Account Details</p>
+                        </div>
+
+                        <form method="post" action="/update/employee/{{ pk }}/?action=account">
+                            {% csrf_token %}
+                            {{ user_form|crispy }}
+                            <button class="btn btn-success"><i class="fa fa-check"></i> Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="card border border-danger">
+                    <div class="card-body p-4">
+
+                        <div>
+                            <p class="card-title text-danger">Other Resources</p>
+                        </div>
+
+                        <p class="card-text">
+                            As you know you are a <strong class="text-danger">ROOT USER</strong> for this system,
+                            given links will redirect you to system root configurations, if you are un-familiar please
+                            contact developer before any changes.
+                        </p>
+
+                        <p class="card-text">
+                            Don't remove yourself from <strong class="text-danger">SUPER USER</strong> in root access
+                            and don't give super user privilege to any one, one wrong single attempt could loss all of
+                            your data
+                        </p>
+
+                        <a class="card-text" href="/admin/auth/user/{{ pk }}/change/"><i class="fa fa-fingerprint"></i> Advance Configuration</a>&nbsp;
+                        <a class="card-text" href="/admin/auth/user/{{ pk }}/password/"><i class="fa fa-lock"></i> Password reset</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

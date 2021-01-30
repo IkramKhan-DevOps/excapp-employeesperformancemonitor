@@ -2,13 +2,6 @@
 {% load static %}
 {% block base_title %}Task{% endblock %}
 
-{% block base_page_css_links %}
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
-{% endblock %}
-
-
-
 {% block base_content %}
 
     <div class="row">
@@ -31,7 +24,7 @@
     {% if task.detailed_description %}
 
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-sm-10">
                 <div class="card">
                     <div class="card-body">
                         <div class="p-4">
@@ -40,14 +33,28 @@
                     </div>
                 </div>
             </div>
+            <div class="col-sm-2">
+                <div class="card">
+                    <div class="card-body">
+                        <div>
+                            <p class="card-title">Participants</p>
+                        </div>
+
+                        <div>
+                            <a class="card-text" href="#">Mark I</a><br>
+                            <a class="card-text" href="#">Joseph</a><br>
+                            <a class="card-text" href="#">Stephen</a><br>
+                            <a class="card-text" href="#">Jane</a><br>
+                            <a class="card-text" href="#">Ali</a><br>
+                            <a class="card-text" href="#">Marcus</a><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     {% endif %}
 
-{% endblock %}
-
-{% block base_page_javascript_links %}
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 {% endblock %}
 
 {% block base_page_javascript_code %}

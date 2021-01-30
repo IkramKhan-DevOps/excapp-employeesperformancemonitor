@@ -1,6 +1,6 @@
 {% extends 'application/base.html' %}
 {% load static %}
-{% block base_title %}employees{% endblock %}
+{% block base_title %}Employees{% endblock %}
 
 {% block base_page_css_links %}
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
@@ -37,14 +37,14 @@
                                 {% for emp in employees %}
 
                                     <tr>
-                                        <th>{{ emp.pk }}</th>
-                                        <td>{{ emp.first_name }} {{ emp.last_name }}</td>
+                                        <th>{{ emp.user.pk }}</th>
+                                        <td>{{ emp.user.first_name }} {{ emp.user.last_name }}</td>
                                         <td>{{ emp.contact_no }}</td>
-                                        <td>{{ emp.email }}</td>
+                                        <td>{{ emp.user.email }}</td>
                                         <td>{{ emp.get_rank_display }}</td>
                                         <td>{{ emp.joined_on }}</td>
                                         <td>
-                                            {% if emp.is_active %}
+                                            {% if emp.user.is_active %}
                                                 <i class="fa fa-check text-success"></i>
                                             {% else %}
                                                 <i class="fa fa-times text-danger"></i>

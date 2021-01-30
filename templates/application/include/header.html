@@ -133,7 +133,8 @@
                                                         <h6 class="mt-0 mb-1">Notifitcaions Not Available </h6>
                                                         <div class="font-size-12 text-muted">
                                                             <p class="mb-1">
-                                                                Please provide document to developer for notifications system.
+                                                                Please provide document to developer for notifications
+                                                                system.
                                                             </p>
                                                             <p class="mb-0"><i
                                                                     class="mdi mdi-clock-outline"></i> 0
@@ -173,18 +174,24 @@
                     <img class="rounded-circle header-profile-user"
                          src="{% static 'application/images/users/avatar-7.jpg' %}"
                          alt="Header Avatar">
-                    <span class="d-none d-xl-inline-block ml-1">MARK</span>
+                    <span class="d-none d-xl-inline-block ml-1">{{ request.user }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <!-- item-->
-                    <a class="dropdown-item" href="/admin/auth/user/{{ request.user.pk }}/change/"><i class="bx bx-user font-size-16 align-middle mr-1"></i>
-                        Profile</a>
-                    <a class="dropdown-item" href="/admin/password_change/">
-                        <i class="bx bx-lock font-size-16 align-middle mr-1"></i> Password Change
-                    </a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" href="#"><i
+                    {% if request.user.is_superuser %}
+                        <a class="dropdown-item" href="/admin/auth/user/{{ request.user.pk }}/change/"><i
+                                class="bx bx-user font-size-16 align-middle mr-1"></i>
+                            Profile</a>
+                        <a class="dropdown-item" href="/admin/password_change/">
+                            <i class="bx bx-lock font-size-16 align-middle mr-1"></i> Password Change
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    {% else %}
+
+                    {% endif %}
+
+                    <a class="dropdown-item text-danger" href="{% url 'application:logout' %}"><i
                             class="bx bx-power-off font-size-16 align-middle mr-1 text-danger"></i> Logout</a>
                 </div>
             </div>
@@ -200,7 +207,9 @@
 </header>
 
 {# SECOND_HEADER #}
-{% include 'application/include/sub_header.html' %}
+{% if request.user.is_superuser %}
+    {% include 'application/include/sub_header.html' %}
+{% endif %}
 
 
 
