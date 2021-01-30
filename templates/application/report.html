@@ -1,0 +1,348 @@
+{% extends 'application/base.html' %}
+{% load static %}
+{% block base_title %}Marcus{% endblock %}
+
+{% block base_page_css_links %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+{% endblock %}
+
+{% block base_page_heading %}Employee: Marcus{% endblock %}
+
+
+{% block base_content %}
+    <div class="row">
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Yesterday</h4>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="text-muted">Calculated</p>
+                            <h3>$34,252</h3>
+                            <p class="text-muted"><span class="text-success mr-2"> 12% <i class="mdi mdi-arrow-up"></i> </span>
+                                Performance</p>
+
+                            <div class="mt-4">
+                                <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View More <i
+                                        class="mdi mdi-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="today_chart" class="apex-charts">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Today</h4>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="text-muted">Calculated</p>
+                            <h3>$34,252</h3>
+                            <p class="text-muted"><span class="text-success mr-2"> 12% <i class="mdi mdi-arrow-up"></i> </span>
+                                Performance</p>
+
+                            <div class="mt-4">
+                                <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View More <i
+                                        class="mdi mdi-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="yesterday_chart" class="apex-charts">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">Tomorrow</h4>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <p class="text-muted">Predicted Value</p>
+                            <h3>$34,252</h3>
+                            <p class="text-muted"><span class="text-success mr-2"> 12% <i class="mdi mdi-arrow-up"></i> </span>
+                                Performance</p>
+
+                            <div class="mt-4">
+                                <a href="" class="btn btn-primary waves-effect waves-light btn-sm">View More <i
+                                        class="mdi mdi-arrow-right ml-1"></i></a>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div id="tomorrow_chart" class="apex-charts">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">January</h4>
+                    <div class="">
+
+                        <div id="month" class="apex-charts">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title mb-4">2020</h4>
+                    <div class="">
+
+                        <div id="year" class="apex-charts">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div>
+{% endblock %}
+
+{% block base_page_javascript_links %}
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+{% endblock %}
+
+{% block base_page_javascript_code %}
+    <script>
+        var today_options = {
+            series: [67],
+            chart: {
+                height: 200,
+                type: 'radialBar',
+                offsetY: -10
+            },
+            plotOptions: {
+                radialBar: {
+                    startAngle: -135,
+                    endAngle: 135,
+                    dataLabels: {
+                        name: {
+                            fontSize: '16px',
+                            color: undefined,
+                            offsetY: 120
+                        },
+                        value: {
+                            offsetY: 0,
+                            fontSize: '10px',
+                            color: undefined,
+                            formatter: function (val) {
+                                return val + "%";
+                            }
+                        }
+                    }
+                }
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    shadeIntensity: 0.15,
+                    inverseColors: false,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 50, 65, 91]
+                },
+            },
+            stroke: {
+                dashArray: 4
+            },
+            labels: [''],
+        };
+        var yesterday_options = {
+            series: [67],
+            chart: {
+                height: 200,
+                type: 'radialBar',
+                offsetY: -10
+            },
+            plotOptions: {
+                radialBar: {
+                    startAngle: -135,
+                    endAngle: 135,
+                    dataLabels: {
+                        name: {
+                            fontSize: '16px',
+                            color: undefined,
+                            offsetY: 120
+                        },
+                        value: {
+                            offsetY: 0,
+                            fontSize: '10px',
+                            color: undefined,
+                            formatter: function (val) {
+                                return val + "%";
+                            }
+                        }
+                    }
+                }
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    shadeIntensity: 0.15,
+                    inverseColors: false,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 50, 65, 91]
+                },
+            },
+            stroke: {
+                dashArray: 4
+            },
+            labels: [''],
+        };
+        var tomorrow_options = {
+            series: [67],
+            chart: {
+                height: 200,
+                type: 'radialBar',
+                offsetY: -10
+            },
+            plotOptions: {
+                radialBar: {
+                    startAngle: -135,
+                    endAngle: 135,
+                    dataLabels: {
+                        name: {
+                            fontSize: '16px',
+                            color: undefined,
+                            offsetY: 120
+                        },
+                        value: {
+                            offsetY: 0,
+                            fontSize: '10px',
+                            color: undefined,
+                            formatter: function (val) {
+                                return val + "%";
+                            }
+                        }
+                    }
+                }
+            },
+            fill: {
+                type: 'gradient',
+                gradient: {
+                    shade: 'dark',
+                    shadeIntensity: 0.15,
+                    inverseColors: false,
+                    opacityFrom: 1,
+                    opacityTo: 1,
+                    stops: [0, 50, 65, 91]
+                },
+            },
+            stroke: {
+                dashArray: 4
+            },
+            labels: [''],
+        };
+
+        var today_chart = new ApexCharts(document.querySelector("#today_chart"), today_options);
+        var yesterday_chart = new ApexCharts(document.querySelector("#yesterday_chart"), yesterday_options);
+        var tomorrow_chart = new ApexCharts(document.querySelector("#tomorrow_chart"), tomorrow_options);
+
+        today_chart.render();
+        yesterday_chart.render();
+        tomorrow_chart.render();
+
+
+        var options_month = {
+            series: [{
+                name: 'Time',
+                data: [31, 40, 28, 51, 42, 109, 100]
+            }, {
+                name: 'Team',
+                data: [11, 32, 45, 32, 34, 52, 41]
+            }, {
+                name: 'Collaboration',
+                data: [12, 34, 47, 39, 32, 59, 45]
+            }, {
+                name: 'Feed',
+                data: [80, 90, 12, 56, 78, 89, 48]
+            }, {
+                name: 'Performance',
+                data: [10, 52, 55, 23, 74, 82, 67]
+            }
+            ],
+            chart: {
+                height: 350,
+                type: 'area'
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            xaxis: {
+                type: 'date',
+                categories: ["1", "2", "3", "4", "5", "6", "7"]
+            },
+            tooltip: {
+                x: {
+                    format: 'Day'
+                },
+            },
+        };
+        var month_chart = new ApexCharts(document.querySelector("#month"), options_month);
+        month_chart.render();
+
+        var options_year = {
+            series: [{
+                name: 'Time',
+                data: [31, 40, 28, 51, 42, 109, 100, 40, 28, 51, 109, 100]
+            }, {
+                name: 'Team',
+                data: [11, 32, 45, 32, 34, 52, 41, 32, 45, 32, 34, 52]
+            }, {
+                name: 'Collaboration',
+                data: [12, 34, 47, 39, 32, 59, 45, 47, 39, 32, 59, 45]
+            }, {
+                name: 'Feed',
+                data: [80, 90, 12, 56, 78, 89, 48, 12, 56, 78, 89, 48]
+            }, {
+                name: 'Performance',
+                data: [10, 52, 55, 23, 74, 82, 67, 55, 23, 74, 82, 67]
+            }
+            ],
+            chart: {
+                height: 350,
+                type: 'area'
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                curve: 'smooth'
+            },
+            xaxis: {
+                type: 'text',
+                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+            },
+            tooltip: {
+                x: {
+                    format: 'Month'
+                },
+            },
+        };
+        var year_chart = new ApexCharts(document.querySelector("#year"), options_year);
+        year_chart.render();
+    </script>
+{% endblock %}

@@ -1,5 +1,8 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
+from django.db.models.signals import post_save, pre_save
+from django.dispatch import receiver
 
 from ckeditor.fields import RichTextField
 
@@ -12,15 +15,10 @@ class Employee(models.Model):
         ('WOR', 'Worker'),
         ('OTH', 'Other'),
     )
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = models.ImageField(upload_to='emp/profiles/', null=True, blank=True)
-    first_name = models.CharField(max_length=50, null=False, blank=False)
-    last_name = models.CharField(max_length=50, null=False, blank=False)
     contact_no = models.CharField(
-        max_length=18, null=False, blank=False, help_text='employee phone or landline number'
-    )
-    email = models.CharField(
-        max_length=50, null=False, blank=False,
-        help_text='Organizational or Personal email to which organization can contact'
+        max_length=18, null=True, blank=True, help_text='employee phone or landline number'
     )
     address = models.TextField(
         null=True, blank=True, help_text='Complete address within area/street, city state and country etc.'
@@ -33,21 +31,17 @@ class Employee(models.Model):
     )
     date_of_birth = models.DateField(null=True, blank=True, help_text='Date of Birth - Format must be YYYY-MM-DD')
     joined_on = models.DateField(null=True, blank=True, help_text='Date of Joining - Format must be YYYY-MM-DD')
-    is_active = models.BooleanField(
-        null=False, blank=False, default=True,
-        help_text='If you check this it means this employee is currently an active member of organization'
-    )
-    created_on = models.DateTimeField(auto_now=True)
     updated_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = 'Employees'
 
     def __str__(self):
-        return f"{self.pk} {self.first_name} {self.last_name}"
+        return f"{self.pk} {self.user.first_name} {self.user.last_name}"
 
 
 class Task(models.Model):
+
     name = models.CharField(max_length=100, null=False, blank=False)
     description = models.TextField(
         max_length=1000, null=False, blank=False, help_text='small description of this task 25-100 characters'
@@ -77,3 +71,14 @@ class Task(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Task, self).save(*args, **kwargs)
+
+
+@receiver(post_save, sender=User)
+def save_employee_on_user(sender, instance, created, **kwargs):
+    if created:
+        if instance.id is None:
+            emp = Employee(user=User.objects.get(pk=instance.id))
+            emp.save()
+        else:
+            emp = Employee(user=User.objects.get(pk=instance.id))
+            emp.save()
