@@ -25,7 +25,7 @@ DEBUG = True
 if DEBUG:
     SERVER_ADDRESS = ['127.0.0.1']
 else:
-    SERVER_ADDRESS = ['?']
+    SERVER_ADDRESS = ['ems.pythonanywhere.com']
 
 ALLOWED_HOSTS = SERVER_ADDRESS
 
