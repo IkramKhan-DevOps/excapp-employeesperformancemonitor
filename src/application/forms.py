@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import PasswordInput, EmailInput
 
-from .models import Employee, Task
+from .models import Employee, Task, RegularReport
 from django.contrib.auth.models import User
 
 
@@ -35,4 +35,10 @@ class UserForm(forms.ModelForm):
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
+        fields = '__all__'
+
+
+class DailyTaskForm(forms.ModelForm):
+    class Meta:
+        model = RegularReport
         fields = '__all__'

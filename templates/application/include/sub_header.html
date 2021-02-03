@@ -50,6 +50,19 @@
                                 </div>
                             </div>
 
+                            {# TASKS #}
+                            <div class="dropdown">
+                                <a class="dropdown-item dropdown-toggle arrow-none" href="#" id="topnav-email"
+                                   role="button" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Daily Progress
+                                    <div class="arrow-down"></div>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="topnav-email">
+                                    <a href="{% url 'application:daily_progress_list' %}" class="dropdown-item">List Progress Reports</a>
+                                </div>
+                            </div>
+
                         </div>
                     </li>
                     {# --------------------------------------------------------------------------------------------- #}

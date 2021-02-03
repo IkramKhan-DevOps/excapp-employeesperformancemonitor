@@ -1,0 +1,160 @@
+{% extends 'application/base.html' %}
+{% load static %}
+{% block base_title %}Employees Progress{% endblock %}
+
+{% block base_page_css_links %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+{% endblock %}
+
+{% block base_page_heading %}Employees Progress Report{% endblock %}
+
+
+{% block base_content %}
+    <div class="row">
+
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+                    {% if not today %}
+                        <div class="text-right">
+                            <a href="{% url 'application:create_daily_report' %}" class="btn btn-sm btn-primary">Generate
+                                Today's Report</a>
+                        </div>
+                        <br>
+                    {% endif %}
+
+                    <div class="table-responsive mb-0">
+                        <table id="employees" class="table table-striped">
+                            <thead class="">
+                            <tr>
+                                <th data-priority="1">Report ID</th>
+                                <th data-priority="2">Total Members</th>
+                                <th data-priority="3">Created</th>
+                                <th data-priority="4">Updated</th>
+                                <th data-priority="8">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody class="small">
+                            {% if regular_reports %}
+                                {% for report in regular_reports %}
+
+                                    <tr>
+                                        <td>{{ report.pk }}</td>
+                                        <td>{{ report.regularreportstats_set.count }}</td>
+                                        <td>{{ report.created_on }}</td>
+                                        <td>{{ report.updated_on }}</td>
+                                        <td>
+                                            <a href="{% url 'application:daily_progress_update' report.pk %}">
+                                                <i class="fa fa-edit"></i> Details
+                                            </a>
+                                        </td>
+                                    </tr>
+
+                                {% endfor %}
+                            {% endif %}
+                            <!-- Repeat -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </div>
+        </div> <!-- end col -->
+        <div class="col-12">
+            <div class="card border border-warning">
+                <div class="card-header bg-transparent border-warning">
+                    <h5 class="my-0 text-warning">
+                        <i class="mdi mdi-alert-outline mr-3"></i>Report Help</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text text-muted">
+                        Please don't delete any report, these reports holds employees progress as well as organization
+                        growth, don't forget to update data regularly, if in case to delete reports please use <b
+                            class="text-danger">ROOT ACCESS</b>, if you need any help contact system developer, you
+                        can delete reports <a href="/admin/application/regularreport/">HERE</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block base_page_javascript_links %}
+
+    {# TODO: Security Leak here try to fix this issue later #}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.colVis.min.js"></script>
+{% endblock %}
+
+{% block base_page_javascript_code %}
+    <script>
+        $(document).ready(function () {
+            $('table').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    {
+                        extend: 'colvis',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        text: 'Show/Hide',
+                        titleAttr: 'Column Visibility'
+                    },
+                    {
+                        extend: 'copy',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        text: '<i class="fa fa-copy text-dark"></i>',
+                        titleAttr: 'Copy'
+                    },
+                    {
+                        extend: 'excel',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        text: '<i class="fa fa-file-excel text-success"></i>',
+                        titleAttr: 'Excel'
+                    },
+                    {
+                        extend: 'csv',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        text: '<i class="fa fa-file text-success"></i>',
+                        titleAttr: 'CSV'
+                    },
+                    {
+                        extend: 'pdf',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        text: '<i class="fa fa-file-pdf text-danger"></i>',
+                        titleAttr: 'PDF'
+                    },
+                    {
+                        extend: 'print',
+                        exportOptions: {
+                            columns: ':visible'
+                        },
+                        text: '<i class="fa fa-print text-primary"></i>',
+                        titleAttr: 'Print'
+                    }
+                ]
+            })
+            ;
+
+        });
+    </script>
+{% endblock %}

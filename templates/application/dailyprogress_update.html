@@ -1,0 +1,145 @@
+{% extends 'application/base.html' %}
+{% load static %}
+{% block base_title %}Progress > {% now 'D d m Y' %}{% endblock %}
+
+{% block base_page_css_links %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">
+{% endblock %}
+
+{% block base_page_heading %}Employees Progress > {% now "jS F Y" %}{% endblock %}
+
+
+{% block base_content %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+
+
+
+                    {# UPDATE AREA #}
+                    <div class="table-responsive mb-0">
+                        <table id="employees" class="table table-striped">
+                            <thead class="">
+                            <tr>
+                                <th data-priority="2">Employee Name</th>
+                                <th data-priority="3">Inbound Calls</th>
+                                <th data-priority="4">Outbound Calls</th>
+                                <th data-priority="5">Answered Calls</th>
+                                <th data-priority="6">Sales Made</th>
+                                <th data-priority="8">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody class="small">
+
+                            {% if report_statistics %}
+                                {% for data in report_statistics %}
+
+                                    <tr>
+                                        <form method="post" action="">
+                                            {% csrf_token %}
+                                            <td>
+                                                <input class="form-control form-control-sm" name="employee"
+                                                       type="number" value="{{ data.employee.pk }}" hidden>
+                                                <b class="text-dark">{{ data.employee.user.first_name }} {{ data.employee.user.last_name }}</b>
+                                            </td>
+                                            <td>
+                                                <input class="form-control form-control-sm" name="inbound" type="number"
+                                                       value="{{ data.inbound_calls }}">
+                                            </td>
+                                            <td>
+                                                <input class="form-control form-control-sm" name="outbound"
+                                                       type="number" value="{{ data.outbound_calls }}">
+                                            </td>
+                                            <td>
+                                                <input class="form-control form-control-sm" name="answered"
+                                                       type="number" value="{{ data.calls_answered }}">
+                                            </td>
+                                            <td>
+                                                <input class="form-control form-control-sm" name="sales" type="number"
+                                                       value="{{ data.sales_made }}">
+                                            </td>
+                                            <td>
+                                                <button class="btn btn-sm btn-primary" type="submit">
+                                                    <i class="fa fa-recycle"></i>
+                                                </button>
+                                                <a class="btn btn-sm btn-danger"
+                                                   href="/daily/progress/update/delete/employee/{{ data.pk }}/"><i
+                                                        class="fa fa-trash"></i></a>
+                                            </td>
+                                        </form>
+                                    </tr>
+
+                                {% endfor %}
+                            {% endif %}
+                            <tr>
+                                <td colspan="6">
+                                    <button type="button" class="btn btn-sm btn-success" data-toggle="modal"
+                                            data-target="#exampleModal">
+                                        Assign Employee
+                                    </button>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- end col -->
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-exclamation-circle"></i> Assign
+                        Employee</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form method="post" action="/daily/progress/update/add/employee/{{ report.pk }}/">
+                        {% csrf_token %}
+                        <select class="form-control" name="employee_add" id="employee_add">
+                            {% if employees %}
+                                {% for employee in employees %}
+
+                                    <option value="{{ employee.pk }}">
+                                        {{ employee.user.first_name }} {{ employee.user.last_name }}
+                                    </option>
+
+                                {% endfor %}
+                            {% endif %}
+                        </select>
+                        <br>
+                        <button class="btn btn-success" type="submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block base_page_javascript_links %}
+
+    {# TODO: Security Leak here try to fix this issue later #}
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+
+{% endblock %}
+
+{% block base_page_javascript_code %}
+    <script>
+        $(document).ready(function () {
+            $('table').DataTable();
+
+        });
+    </script>
+{% endblock %}
