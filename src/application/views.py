@@ -1,14 +1,18 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
+from django.db.models import Sum
 from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
+import datetime
+
 from src.application.forms import EmployeeForm, TaskForm, UserRegisterForm, UserForm
-from src.application.models import Employee, Task
+from src.application.models import Employee, Task, RegularReport, RegularReportStats
+
 
 @login_required
 def dashboard(request):
@@ -205,6 +209,120 @@ def delete_task(request, pk):
     return redirect('application:tasks')
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+def update_task_progress(request):
+    pass
+
+
+def daily_progress_list(request):
+    today = False
+
+    reports = RegularReport.objects.all().order_by('-created_on')
+    if reports:
+        if reports[0].progress_present:
+            today = True
+
+    if not today:
+        messages.error(request=request,
+                       message="Today's report is missing if you want to generate please click the button below")
+    context = {
+        'today': today,
+        'regular_reports': reports
+    }
+    return render(request=request, template_name='application/dailyprogress_list.html', context=context)
+
+
+def daily_progress_update(request, pk):
+    report = None
+    report_statistics = None
+
+    try:
+        report = RegularReport.objects.get(pk=pk)
+        report_statistics = report.regularreportstats_set.all()
+    except RegularReport.DoesNotExist:
+        return redirect('application:daily_progress_list')
+
+    if request.method == 'POST':
+
+        try:
+
+            employee = Employee.objects.get(pk=request.POST['employee'])
+            statistic = RegularReportStats.objects.get(employee=employee, report=report)
+            statistic.calls_answered = request.POST['answered']
+            statistic.inbound_calls = request.POST['inbound']
+            statistic.outbound_calls = request.POST['outbound']
+            statistic.sales_made = request.POST['sales']
+            statistic.save()
+
+        except Employee.DoesNotExist:
+            return redirect('application:daily_progress_list')
+        except RegularReportStats.DoesNotExist:
+            return redirect('application:daily_progress_list')
+
+    context = {
+        'report': report,
+        'report_statistics': report_statistics,
+        'employees': Employee.objects.all()
+    }
+
+    return render(request, 'application/dailyprogress_update.html', context=context)
+
+
+def update_daily_progress(request):
+    pass
+
+
+def add_employee_to_daily_progress(request, pk):
+    if request.method == 'POST':
+        employee = None
+        try:
+            employee = Employee.objects.get(pk=request.POST['employee_add'])
+            report = RegularReport.objects.get(pk=pk)
+
+            if RegularReportStats.objects.filter(employee=employee, report=report):
+                messages.error(request, 'Requested Employee already assigned')
+            else:
+                RegularReportStats(
+                    employee=employee,
+                    report=report
+                ).save()
+                messages.success(request, f'{employee.user.username} assigned successfully')
+
+        except Employee.DoesNotExist:
+            messages.error(request, 'Requested Employee does not exists')
+
+        return redirect('application:daily_progress_update', pk)
+
+
+def delete_employee_from_daily_progress(request, pk):
+    id = None
+    try:
+        stats = RegularReportStats.objects.get(pk=pk)
+        id = stats.report.pk
+        stats.delete()
+        messages.error(request, 'Requested Employee Deleted successfully')
+
+    except RegularReportStats.DoesNotExist:
+        messages.success(request, 'Requested Record does not exists')
+
+    return redirect('application:daily_progress_update', id)
+
+
+def create_daily_report(request):
+    available = False
+    report = RegularReport.objects.all().order_by('-created_on')
+    if report:
+        if report[0].progress_present:
+            available = True
+            messages.error(request, 'Report already exists')
+
+    if not available:
+        RegularReport().save()
+        messages.success(request, f'{datetime.date.today()} report generated successfully')
+    return redirect('application:daily_progress_list')
+
+
+# ---------------------------------------------------------------------------------------------------------------------
 def view_login(request):
     if request.user.is_authenticated:
         return redirect('/')

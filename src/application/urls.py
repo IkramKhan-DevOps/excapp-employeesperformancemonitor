@@ -19,7 +19,8 @@ from src.application.views import (
     dashboard, help_view,
     employees, add_employee, update_employee, delete_employee, employee,
     tasks, task, add_task, update_task, delete_task, view_login, view_logout,
-    report
+    report, daily_progress_list, daily_progress_update, delete_employee_from_daily_progress,
+    add_employee_to_daily_progress, create_daily_report
 )
 
 app_name = 'application'
@@ -42,5 +43,11 @@ urlpatterns = [
     path('add/task/', add_task, name='add_task'),
     path('update/task/<int:pk>/', update_task, name='update_task'),
     path('delete/task/<int:pk>/', delete_task, name='delete_task'),
+
+    path('daily/progress/list/', daily_progress_list, name='daily_progress_list'),
+    path('daily/progress/create/', create_daily_report, name='create_daily_report'),
+    path('daily/progress/update/<int:pk>/', daily_progress_update, name='daily_progress_update'),
+    path('daily/progress/update/add/employee/<int:pk>/', add_employee_to_daily_progress, name='add_employee_to_daily_progress'),
+    path('daily/progress/update/delete/employee/<int:pk>/', delete_employee_from_daily_progress, name='delete_employee_from_daily_progress')
 
 ]

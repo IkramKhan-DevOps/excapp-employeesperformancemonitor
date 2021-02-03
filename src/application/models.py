@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.text import slugify
@@ -60,7 +62,7 @@ class Task(models.Model):
         help_text='If you check this it means the task is active and if you disable it it will be removed temporary'
     )
     created_on = models.DateTimeField(auto_now=True)
-    updated_on = models.DateTimeField(auto_now_add=True, help_text='End date and time of the task')
+    updated_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = 'Tasks'
@@ -71,6 +73,38 @@ class Task(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.name)
         super(Task, self).save(*args, **kwargs)
+
+
+class RegularReport(models.Model):
+
+    created_on = models.DateTimeField(auto_now=True)
+    updated_on = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = 'Daily Progress'
+
+    def __str__(self):
+        return f'Report : {self.created_on.date()}'
+
+    @property
+    def progress_present(self):
+        return self.created_on.astimezone().date() == datetime.date.today()
+
+
+class RegularReportStats(models.Model):
+    report = models.ForeignKey(RegularReport, null=True, blank=True, on_delete=models.SET_NULL)
+    employee = models.ForeignKey(Employee, null=False, blank=False, on_delete=models.CASCADE)
+    inbound_calls = models.PositiveIntegerField(null=True, blank=True, default=0)
+    outbound_calls = models.PositiveIntegerField(null=True, blank=True, default=0)
+    calls_answered = models.PositiveIntegerField(null=True, blank=True, default=0)
+    sales_made = models.PositiveIntegerField(null=True, blank=True, default=0)
+
+    class Meta:
+        verbose_name = 'Employee Current Report'
+        verbose_name_plural = 'Employee Regular Reports'
+
+    def __str__(self):
+        return str(self.pk)
 
 
 @receiver(post_save, sender=User)
