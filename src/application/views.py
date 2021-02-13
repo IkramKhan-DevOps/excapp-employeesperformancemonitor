@@ -165,7 +165,7 @@ def add_task(request):
     context = {
         'form': form
     }
-    return render(request=request, template_name='application/add_task.html', context=context)
+    return render(request=request, template_name='application/../../templates/application/add_task.html', context=context)
 
 
 @user_passes_test(lambda u: u.is_superuser)
