@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -18,12 +19,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'o*ln@)$we)69&+3%4wd-f3jzvrr9)+wwm^*e1f$pzuk#k*c3@b'
+SECRET_KEY = config('DJANGO_SCRET_KEY')  # config('DEBUG', cast=bool) etc
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 if DEBUG:
-    SERVER_ADDRESS = ['127.0.0.1']
+    SERVER_ADDRESS = ['127.0.0.1', 'ems.pythonanywhere.com']
 else:
     SERVER_ADDRESS = ['ems.pythonanywhere.com']
 

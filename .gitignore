@@ -136,3 +136,6 @@ assets/
 
 migrations
 migrations/
+
+.env
+.env/
