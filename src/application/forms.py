@@ -9,7 +9,7 @@ class EmployeeForm(forms.ModelForm):
     class Meta:
         model = Employee
         fields = (
-            'profile_image', 'contact_no', 'address', 'address', 'nic', 'org_id', 'rank', 'date_of_birth', 'joined_on',
+            'profile_image', 'gender', 'contact_no', 'address', 'address', 'nic', 'org_id', 'rank', 'date_of_birth', 'joined_on',
         )
 
 

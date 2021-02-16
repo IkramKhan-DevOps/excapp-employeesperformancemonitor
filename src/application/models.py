@@ -10,6 +10,10 @@ from ckeditor.fields import RichTextField
 
 
 class Employee(models.Model):
+    EMP_GENDER = (
+        ('m', 'Male'),
+        ('f', 'Female')
+    )
     EMP_RANKS = (
         ('CEO', 'Chief Executive Officer'),
         ('DIR', 'Director'),
@@ -19,6 +23,7 @@ class Employee(models.Model):
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_image = models.ImageField(upload_to='emp/profiles/', null=True, blank=True)
+    gender = models.CharField(max_length=1, default='m', null=False, blank=False, choices=EMP_GENDER)
     contact_no = models.CharField(
         max_length=18, null=True, blank=True, help_text='employee phone or landline number'
     )
@@ -31,8 +36,8 @@ class Employee(models.Model):
         max_length=3, null=True, blank=True, choices=EMP_RANKS,
         help_text='Employee Rank/Post/Destination within organization'
     )
-    date_of_birth = models.DateField(null=True, blank=True, help_text='Date of Birth - Format must be YYYY-MM-DD')
-    joined_on = models.DateField(null=True, blank=True, help_text='Date of Joining - Format must be YYYY-MM-DD')
+    date_of_birth = models.DateTimeField(null=True, blank=True, help_text='Date of Birth - Format must be YYYY-MM-DD')
+    joined_on = models.DateTimeField(null=True, blank=True, help_text='Date of Joining - Format must be YYYY-MM-DD')
     updated_on = models.DateTimeField(auto_now_add=True)
 
     class Meta:
