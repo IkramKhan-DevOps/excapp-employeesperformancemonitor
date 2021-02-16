@@ -1,23 +1,109 @@
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
-from django.db.models import Sum
-from django.http import HttpResponseRedirect
 from django.contrib import messages
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 import datetime
 
-from src.application.forms import EmployeeForm, TaskForm, UserRegisterForm, UserForm
+from src.application.forms import EmployeeForm, TaskForm, UserForm
 from src.application.models import Employee, Task, RegularReport, RegularReportStats
+
+
+class DailyProgressReport:
+    def __init__(
+            self, employee_name, inbound_calls, outbound_calls, calls_answered, sales_made,
+            total, percent=0, employee_gender='m', color='success'
+    ):
+        self.employee_name = employee_name
+        self.inbound_calls = inbound_calls
+        self.outbound_calls = outbound_calls
+        self.calls_answered = calls_answered
+        self.sales_made = sales_made
+        self.total = total
+        self.percent = percent
+        self.employee_gender = employee_gender
+        self.color = color
 
 
 @login_required
 def dashboard(request):
+    # GETTING_DAILY_REPORT
+    today_report_stats = RegularReportStats.objects.filter(
+        report__created_on__day=datetime.date.today().day,
+        report__created_on__month=datetime.date.today().month,
+        report__created_on__year=datetime.date.today().year
+    )
+
+    # BASE_LOGIC_CALCULATION ------------------------------------------------------------------------------------------
+
+    total_tasks = Task.objects.all().count()
+    completed_tasks = Task.objects.filter(is_active=True, start_time__lte=datetime.date.today()).count()
+    cancelled_tasks = Task.objects.filter(is_active=False).count()
+    running_tasks = Task.objects.filter(is_active=True, start_time=datetime.date.today()).count()
+
+    maximum = 0
+    minimum = 0
+    minimum_user = 0
+    maximum_user = 0
+    today_report = []
+
+    '''CODE_BRAIN CALCULATIONS'''
+    for i, r in enumerate(today_report_stats):
+        emp = r.employee.user.username
+        emp_g = r.employee.gender
+        i_c = r.inbound_calls
+        o_c = r.outbound_calls
+        c_a = r.calls_answered
+        s_m = r.sales_made
+
+        total = i_c + o_c + c_a + s_m + s_m
+        today_report.append(
+            DailyProgressReport(
+                emp, i_c, o_c, c_a, s_m, total, percent=0, employee_gender=emp_g
+            )
+        )
+
+        if i == 0:
+            maximum_user = emp
+            minimum_user = emp
+
+            maximum = total
+            minimum = total
+
+        if maximum < total:
+            maximum = total
+            maximum_user = emp
+
+        if minimum > total:
+            minimum = total
+            minimum_user = emp
+
+    '''SETTING_PERCENT'''
+    for l in today_report:
+        l.percent = (l.total/maximum)*100
+        l.color = 'danger' if l.percent < 20 \
+            else 'warning' if 20 <= l.percent < 40 \
+            else 'info' if 40 <= l.percent < 60 \
+            else 'primary' if 60 <= l.percent < 80 \
+            else 'success'
+
+    # -----------------------------------------------------------------------------------------------------------------
     if request.user.is_superuser:
-        return render(request=request, template_name='application/dashboard.html')
+        context = {
+            'today_report': today_report,
+            'today_min': minimum,
+            'today_min_user': minimum_user,
+            'today_max': maximum,
+            'today_max_user': maximum_user,
+
+            'total_tasks': total_tasks,
+            'completed_tasks': completed_tasks,
+            'running_tasks': running_tasks,
+            'cancelled_tasks': cancelled_tasks,
+        }
+        return render(request=request, template_name='application/dashboard.html', context=context)
     else:
         return render(request=request, template_name='application/employee_dashboard.html')
 
@@ -165,7 +251,8 @@ def add_task(request):
     context = {
         'form': form
     }
-    return render(request=request, template_name='application/../../templates/application/add_task.html', context=context)
+    return render(request=request, template_name='application/../../templates/application/add_task.html',
+                  context=context)
 
 
 @user_passes_test(lambda u: u.is_superuser)

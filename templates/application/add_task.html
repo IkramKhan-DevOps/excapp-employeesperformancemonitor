@@ -3,12 +3,20 @@
 {% load crispy_forms_tags %}
 
 
+{% block base_page_css_links %}
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css"
+          integrity="sha256-DOS9W6NR+NFe1fUhEE0PGKY/fubbUCnOfTje2JMDw3Y=" crossorigin="anonymous"/>
+{% endblock %}
+
+
 {% block base_title %}
     Add/Update-Task
 {% endblock %}
 
 {% block base_page_heading %}
-    Add/Update Task
+    Add/Update Task <br>
+    <a href="{% url 'application:add_task' %}" class="btn btn-success btn-sm mt-1"><i class="fa fa-plus-circle"></i> Add New</a>
 {% endblock %}
 
 {% block base_content %}
@@ -16,6 +24,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-sm-10">
                 <div class="card">
+
                     <div class="card-body p-4">
 
                         <form method="post" enctype="multipart/form-data">
@@ -29,4 +38,23 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block base_page_javascript_links %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"
+            integrity="sha256-FEqEelWI3WouFOo2VWP/uJfs1y8KJ++FLh2Lbqc8SJk=" crossorigin="anonymous"></script>
+{% endblock %}
+
+{% block base_page_javascript_code %}
+    <script>
+        $(document).ready(function () {
+            $('#id_start_time').datetimepicker({
+                format: 'Y-m-d H:i:s',
+            });
+
+            $('#id_end_time').datetimepicker({
+                format: 'Y-m-d H:i:s',
+            });
+        });
+    </script>
 {% endblock %}
