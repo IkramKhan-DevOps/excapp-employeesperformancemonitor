@@ -87,7 +87,10 @@ def dashboard(request):
 
     '''SETTING_PERCENT'''
     for l in today_report:
-        l.percent = int((l.total/maximum)*100)
+        try:
+            l.percent = int((l.total / maximum) * 100)
+        except ZeroDivisionError:
+            l.percent = 0
         l.color = 'danger' if l.percent < 20 \
             else 'warning' if 20 <= l.percent < 40 \
             else 'info' if 40 <= l.percent < 60 \
