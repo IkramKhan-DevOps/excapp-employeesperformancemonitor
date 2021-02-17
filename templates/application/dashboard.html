@@ -83,36 +83,70 @@
     <br>
 
 
-    {% if today_report %}
-        <p class="card-title"><i class="bx bx-calendar"></i>Today's Progress Report {% now "DATE_FORMAT" %} </p>
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
-                        {% for r in today_report %}
-                            <div class="">
-                                <p class="card-title">{{ r.employee_name }}</p>
-                                <div class="progress mb-4" style="height: 100px;">
-                                    <div class="progress-bar bg-{{ r.color }} progress-bar-striped progress-bar-animated py-4 text-right"
-                                         role="progressbar" style="width: {{ r.percent }}%;" aria-valuenow="{{ r.percent }}"
-                                         aria-valuemin="0" aria-valuemax="100">
-                                        <p class="h1 p-2 text-white-50">{{ r.percent }}%
-                                            {% if r.employee_gender == 'm' %}
-                                                <img src="{% static 'application/boy_3_gif.gif' %}" height="90px">
-                                            {% else %}
-                                                <img src="{% static 'application/girl_1_gif.gif' %}" height="90px">
-                                            {% endif %}
-                                        </p>
-                                    </div>
-                                </div>
 
+    <p class="card-title"><i class="bx bx-calendar"></i>Today's Progress Report {% now "DATE_FORMAT" %} </p>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    {% if report %}
+                        {% if today_report %}
+                            {% for r in today_report %}
+                                <div class="">
+                                    <p class="card-title">{{ r.employee_name }}</p>
+                                    <div class="progress mb-4" style="height: 100px;">
+                                        <div class="progress-bar bg-{{ r.color }} progress-bar-striped progress-bar-animated py-4 text-right"
+                                             role="progressbar" style="width: {{ r.percent }}%;"
+                                             aria-valuenow="{{ r.percent }}"
+                                             aria-valuemin="0" aria-valuemax="100">
+                                            <p class="h1 p-2 text-white-50">{{ r.percent }}%
+                                                {% if r.employee_gender == 'm' %}
+                                                    <img src="{% static 'application/boy_3_gif.gif' %}" height="90px">
+                                                {% else %}
+                                                    <img src="{% static 'application/girl_1_gif.gif' %}" height="90px">
+                                                {% endif %}
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p class="card-text text-danger text-center">Today's report has been added but you haven't
+                                assigned any members yet add your employees to track their performance
+                            </p>
+                            <div class="text-center">
+                                <a href="{% url 'application:daily_progress_update' report.pk %}"
+                                   class="btn btn-light">
+                                    <i class="fa fa-user-friends"></i> Assign Employees
+                                </a>
+                                <a href="{% url 'application:daily_progress_list' %}"
+                                   class="btn btn-light">
+                                    <i class="fa fa-calendar"></i> Reports
+                                </a>
                             </div>
-                        {% endfor %}
-                    </div>
+                        {% endif %}
+                    {% else %}
+                        <p class="card-text text-danger text-center">Today's report is missing
+                            Please add report in reports panel to view today's employee performance
+
+                        </p>
+                        <div class="text-center">
+                            <a href="{% url 'application:create_daily_report' %}"
+                               class="btn btn-light">
+                                <i class="fa fa-calendar-plus"></i> Add Report
+                            </a>
+                            <a href="{% url 'application:daily_progress_list' %}"
+                               class="btn btn-light">
+                                <i class="fa fa-chart-line"></i> Reports
+                            </a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
-    {% endif %}
+    </div>
+
 
 {% endblock %}
 

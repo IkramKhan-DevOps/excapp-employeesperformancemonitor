@@ -35,6 +35,11 @@ def dashboard(request):
         report__created_on__month=datetime.date.today().month,
         report__created_on__year=datetime.date.today().year
     )
+    today_r = RegularReport.objects.filter(
+        created_on__day=datetime.date.today().day,
+        created_on__month=datetime.date.today().month,
+        created_on__year=datetime.date.today().year
+    ).first()
 
     # BASE_LOGIC_CALCULATION ------------------------------------------------------------------------------------------
 
@@ -82,7 +87,10 @@ def dashboard(request):
 
     '''SETTING_PERCENT'''
     for l in today_report:
-        l.percent = (l.total/maximum)*100
+        try:
+            l.percent = int((l.total / maximum) * 100)
+        except ZeroDivisionError:
+            l.percent = 0
         l.color = 'danger' if l.percent < 20 \
             else 'warning' if 20 <= l.percent < 40 \
             else 'info' if 40 <= l.percent < 60 \
@@ -92,6 +100,7 @@ def dashboard(request):
     # -----------------------------------------------------------------------------------------------------------------
     if request.user.is_superuser:
         context = {
+            'report': today_r,
             'today_report': today_report,
             'today_min': minimum,
             'today_min_user': minimum_user,
