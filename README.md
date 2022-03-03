@@ -7,7 +7,7 @@
 
 Add employees track records and assigns different tasks
 
-## VERSION 1 (30%)
+## FEATURES
 - Root Access
 - Login Super Admin
 - Create/Update/Delete Users
@@ -21,7 +21,7 @@ Add employees track records and assigns different tasks
 - check records
 - Reports and graphs  
 
-These technologies are used in projects to work properly:
+## TECHNOLOGIES
 
 - [HTML5] - HTML enhanced for web apps!
 - [CSS3] - Awesome Designing
